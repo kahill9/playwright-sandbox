@@ -1,0 +1,23 @@
+{
+  "name": "playwright-sandbox",
+  "version": "1.0.0",
+  "description": "playwright sandbox",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kahill9/playwright-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kahill9/playwright-sandbox/issues"
+  },
+  "homepage": "https://github.com/kahill9/playwright-sandbox#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@types/node": "^24.0.3"
+  }
+}
