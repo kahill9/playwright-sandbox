@@ -1,0 +1,3 @@
+testCase,userName,password,vendorTaxId,vendorName,vendorAddress,vendorCity,vendorCountry
+test_case_1,kaylie.hill@cgi.com,testpassword,746334563,test Vendor 1,48749 co. rd. 43,Cullman,USA
+test_case_2,kaylie.hill@cgi.com,testpassword,439192341,test Vendor 2,32423 co. rd. 22,Cullman,USA
