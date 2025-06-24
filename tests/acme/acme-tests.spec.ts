@@ -5,6 +5,7 @@ import { AddVendorPage } from "../../page-objects/acme/acme-add-vendor";
 import fs from "fs";
 import path from "path";
 import { parse } from "csv-parse/sync";
+import { SearchVendorPage } from "../../page-objects/acme/acme-search-vendor";
 
 const specificSubdirectory = path.join(__dirname, "..", "..", "test-data");
 
@@ -17,7 +18,7 @@ const records = parse(
 );
 
 test.beforeEach("Login to Acme", async ({ page }) => {
-  console.log(`Running ${test.info().title}`);
+  console.log(`Loging in for - ${test.info().title}`);
 
   const acmeLoginPage = new AcmeLoginPage(page);
 
@@ -41,6 +42,7 @@ for (const record of records) {
 
       const acmeDashboardPage = new AcmeDashboardPage(page);
       const addVendorPage = new AddVendorPage(page);
+      const searchVendorPage = new SearchVendorPage(page);
 
       await acmeDashboardPage.clickAddNewVendor();
 
@@ -53,6 +55,24 @@ for (const record of records) {
       };
 
       await addVendorPage.addNewVendor(vendor);
+
+      // Return to Dashboard
+      await acmeDashboardPage.returnHome();
+
+      // Validate vendor was added
+      console.log(`Validating Vendor for - ${test.info().title}`);
+
+      await acmeDashboardPage.clickSearchForVendor();
+
+      await searchVendorPage.searchByVendorName(vendor.vendorName);
+
+      await expect(searchVendorPage.searchResultsTableVendorName).toHaveText(vendor.vendorName);
+      await expect(searchVendorPage.searchResultsTableVendorTaxId).toHaveText(vendor.vendorTaxId);
+      await expect(searchVendorPage.searchResultsTableVendorAddress).toHaveText(vendor.vendorAddress);
+      await expect(searchVendorPage.searchResultsTableVendorCity).toHaveText(vendor.vendorCity);
+      await expect(searchVendorPage.searchResultsTableVendorCountry).toHaveText(vendor.vendorCountry);
     }
   );
 }
+
+
