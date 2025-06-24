@@ -13,8 +13,8 @@ export class AcmeDashboardPage {
     this.vendorsButton = page.getByRole("button", { name: "Vendors" });
     this.addVendorButton = page.getByRole("link", { name: "Add Vendor" });
     this.searchVendorButton = page.getByRole("link", { name: "Search for Vendor" });
-    this.homeButton = page.locator('ol').getByRole('link', { name: 'Home' });
-
+    //this.homeButton = page.locator('ol').getByRole('link', { name: 'Home' });
+    this.homeButton = page.locator('xpath=//html/body/div/div[1]/div/ol/li[1]/a');
   }
 
   async clickAddNewVendor() {
